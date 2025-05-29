@@ -1,0 +1,30 @@
+<label *ngIf="label" [for]="inputId" class="form-label">{{ label }}</label>
+
+<ng-container *ngIf="inputTemplate; else defaultInput" [ngTemplateOutlet]="inputTemplate"></ng-container>
+
+<ng-template #defaultInput>
+  <!-- Checkbox input -->
+  <input *ngIf="type === 'checkbox'" [id]="inputId" type="checkbox" class="form-check-input" [(ngModel)]="value"
+    (ngModelChange)="onChange($event)" (blur)="onTouched()" [disabled]="disabled" />
+
+  <!-- Text or other input types -->
+  <input *ngIf="type !== 'checkbox'" [id]="inputId" class="form-control" [type]="type" [placeholder]="placeholder"
+    [(ngModel)]="value" (ngModelChange)="onChange($event)" (blur)="onTouched()" [disabled]="disabled" />
+</ng-template>
+
+<!-- Help text -->
+<small *ngIf="helpText" class="form-text text-muted">{{ helpText }}</small>
+
+<!-- Error messages -->
+<div class="text-danger mt-1" *ngIf="ngControl?.invalid && (ngControl?.touched || ngControl?.dirty)">
+  <small *ngIf="ngControl?.errors?.['required']">
+    {{ fieldName || 'This field' }} is required.
+  </small>
+  <small *ngIf="ngControl?.errors?.['email']">
+    Please enter a valid {{ fieldName?.toLowerCase() || 'value' }}.
+  </small>
+  <small *ngIf="ngControl?.errors?.['minlength']">
+    {{ fieldName || 'This field' }} must be at least
+    {{ ngControl.errors?.['minlength'].requiredLength }} characters.
+  </small>
+</div>

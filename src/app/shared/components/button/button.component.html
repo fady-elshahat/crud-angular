@@ -1,0 +1,13 @@
+<button [type]="type" class="btn" [ngClass]="btnClass" [disabled]="disabled || loading" (click)="clicked.emit($event)">
+  <ng-container *ngIf="icon && !loading">
+    <i [class]="icon"></i>
+  </ng-container>
+
+  <ng-container *ngIf="!loading; else loadingTpl">
+    <ng-content></ng-content>
+  </ng-container>
+
+  <ng-template #loadingTpl>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </ng-template>
+</button>
