@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../../../../core/services/auth.service';
-import { ToastService } from '../../../../core/services/toast.service';
+
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { CardComponent } from '../../../../shared/components/card/card.component';
 import { InputFieldComponent } from '../../../../shared/components/input-field/input-field.component';
+import { AuthService } from '../../../../core/services/auth.service';
+import { ToastService } from '../../../../core/services/toast.service';
 
 
 @Component({
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnDestroy {
         username: new FormControl(null, Validators.required),
         email: new FormControl(null, [Validators.required, Validators.email]),
         password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+        products: []
       })
   }
 
@@ -52,7 +54,11 @@ export class RegisterComponent implements OnDestroy {
         next: (resp) => {
           this._ToastService.showSuccess(resp.message)
         },
-        error: (err) => this._ToastService.showError(err.message),
+        error: (err) => {
+          this._ToastService.showError(err.message)
+          this.isLoading = false;
+
+        },
         complete: () => {
           this.isLoading = false;
           this._Router.navigate(['/login'])

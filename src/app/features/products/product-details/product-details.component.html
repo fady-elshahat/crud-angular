@@ -1,0 +1,18 @@
+<div class="border rounded p-3 bg-light my-3">
+  <h4 class="mb-3 text-center">{{ product.name }}</h4>
+  <ul class="list-unstyled mb-0">
+    <li><strong>Price:</strong> {{ product.price }}$</li>
+    <li><strong>Category:</strong> {{ product.category }}</li>
+    <li>
+      <strong>Available:</strong>
+      <span class="badge" [ngClass]="product.available ? 'bg-success' : 'bg-danger'">
+        {{ product.available ? 'Yes' : 'No' }}
+      </span>
+    </li>
+    <li>
+      <p-image [src]="product.img" [alt]="product.name + 'img'" width="450" [preview]="true" />
+
+    </li>
+
+  </ul>
+</div>

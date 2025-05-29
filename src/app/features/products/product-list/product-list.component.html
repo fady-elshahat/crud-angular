@@ -1,0 +1,80 @@
+<section class="product-list">
+  <p-table #dt [value]="products" [paginator]="true" [rows]="5" [columns]="cols" selectionMode="multiple"
+    [exportHeader]="'customExportHeader'" [globalFilterFields]="['name', 'category' , 'price' ,'available']"
+    responsiveLayout="scroll" [exportHeader]="'customExportHeader'">
+    <ng-template pTemplate="caption">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-2">
+          <h5 class="m-0">Product List</h5>
+        </div>
+
+        <div class="col-md-3">
+          <app-input-field [label]="''" [placeholder]="'Search...'" [type]="'text'" [(ngModel)]="searchValue"
+            (ngModelChange)="onSearch()" [helpText]="''">
+          </app-input-field>
+        </div>
+
+        <div class="col-md-5">
+          <div class="d-flex justify-content-end align-items-center">
+            <app-button icon="pi pi-file-export" btnClass="btn-outline-secondary me-2" (clicked)="dt.exportCSV()">Export
+              CSV</app-button>
+            <app-button icon="pi pi-plus" btnClass="btn-primary" (clicked)="addProduct()"> Add Product
+            </app-button>
+          </div>
+
+        </div>
+
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Image </th>
+        <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+        <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+        <th pSortableColumn="available">Available <p-sortIcon field="available"></p-sortIcon></th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>
+          <img class="img-fluid img-product" [src]="product.img || 'https://placehold.co/60x40?text=No+Img'"
+            [alt]="product.name + ' img'">
+        </td>
+
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }} $</td>
+        <td>{{ product.category }}</td>
+        <td>
+          <span [ngClass]="{ 'text-success': product.available, 'text-danger': !product.available }">
+            {{ product.available ? 'Yes' : 'No' }}
+          </span>
+        </td>
+        <td>
+          <div class="d-flex">
+            <app-button icon="pi pi-pencil" btnClass="btn-outline-primary btn-sm me-2"
+              (clicked)="onEdit(product)"></app-button>
+            <p-confirmpopup />
+            <app-button icon="pi pi-trash" btnClass="btn-outline-danger btn-sm"
+              (clicked)="onDelete(product , $event)"></app-button>
+            <app-button icon="pi pi-eye" btnClass="btn-outline-secondary btn-sm ms-2"
+              (clicked)="onShow(product)"></app-button>
+          </div>
+
+        </td>
+      </tr>
+
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5" class="text-center text-muted">No Products Currently Available.</td>
+      </tr>
+    </ng-template>
+
+
+  </p-table>
+
+</section>

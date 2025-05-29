@@ -3,6 +3,7 @@ import { AuthLayoutComponent } from './system/layout/pages/auth-layout/auth-layo
 import { SystemLayoutComponent } from './system/layout/pages/system-layout/system-layout.component';
 import { authGuard } from './core/guards/auth.guard';
 import { noAuthGuard } from './core/guards/no-auth.guard';
+import { NotFoundComponent } from './system/layout/pages/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
@@ -22,9 +23,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
 
-
+      {
+        path: 'products', loadComponent: () => import('./features/products/product-list/product-list.component').then(m => m.ProductListComponent)
+      }
     ]
   },
 
-  { path: '**', redirectTo: 'login' }
+  { path: '**', component: NotFoundComponent },
 ];
