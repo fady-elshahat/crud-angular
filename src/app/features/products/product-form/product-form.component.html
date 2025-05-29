@@ -1,0 +1,49 @@
+<section class="product-form">
+  <form (ngSubmit)="save()">
+
+
+
+    <div class="mb-3">
+      <app-input-field [placeholder]="'Enter your Name'" [(ngModel)]="product.name" label="Name" name="name" required
+        [type]="'text'"></app-input-field>
+    </div>
+
+
+
+    <div class="mb-3">
+      <app-input-field [placeholder]="'Enter your Price'" [(ngModel)]="product.price" label="Price" name="price"
+        required [type]="'number'"></app-input-field>
+    </div>
+
+    <div class="mb-3">
+
+      <app-input-field [placeholder]="'Enter your Category'" [(ngModel)]="product.category" label="Category"
+        name="category" required [type]="'text'"></app-input-field>
+    </div>
+
+    <div class="mb-3 form-check">
+
+      <app-input-field [(ngModel)]="product.available" label="Available" name="available" required
+        [type]="'checkbox'"></app-input-field>
+    </div>
+
+
+    <div class="mb-3">
+      <app-input-upload [label]="'Choose Image'" [multiple]="false" (base64Image)="onImageUpload($event)">
+      </app-input-upload>
+
+      <div *ngIf="imageBase64" class="mt-3">
+        <img [src]="imageBase64" alt="Preview" class="img-thumbnail d-block mx-auto" style="max-height: 200px;">
+      </div>
+    </div>
+    <div class="btms-form d-flex align-items-center">
+      <app-button type="submit" btnClass="btn-primary  me-3"
+        [disabled]="!(product.price && product.name && product.category)">
+        Save
+      </app-button>
+      <app-button type="button" btnClass="btn-secondary" (clicked)="cancel()">Cancel</app-button>
+    </div>
+
+
+  </form>
+</section>
