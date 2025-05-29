@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+// Scss
+@use './styles/variables';
+@use './styles/mixins';
+// @import 'components/button';
+
+// Bootstrap
+@use 'bootstrap/scss/bootstrap';
+
+// PrimNg
+@use "primeicons/primeicons.css";
