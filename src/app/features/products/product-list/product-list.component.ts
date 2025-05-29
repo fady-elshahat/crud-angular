@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Table, TableModule } from 'primeng/table';
 import { IProduct } from '../../../core/interfaces/product/product';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
@@ -48,13 +48,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public cols!: IColumn[];
   public exportColumns!: IExportColumn[];
 
+  constructor(private _Cdr: ChangeDetectorRef) {
 
+  }
 
 
   ngOnInit(): void {
     this._Subscription.add(
       this._ProductsService.products$.subscribe(products => {
         this.products = products ?? [];
+        this._Cdr.detectChanges();
+
       })
     );
 
