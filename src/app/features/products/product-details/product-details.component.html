@@ -10,7 +10,8 @@
       </span>
     </li>
     <li>
-      <p-image [src]="product.img" [alt]="product.name + 'img'" width="450" [preview]="true" />
+      <p-image class="img-fluid img-product" [src]="product.img || 'https://placehold.co/60x40?text=No+Img'"
+        [alt]="product.name + 'img'" width="450" [preview]="true" />
 
     </li>
 

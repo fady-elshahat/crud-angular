@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
 
   public isLoading = false;
-  public text = 'CRUD APP';
+  public text = 'crud app';
   public letters = this.text.split('');
   public animationState = 0;
 

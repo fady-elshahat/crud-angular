@@ -1,7 +1,7 @@
 <section class="product-list">
   <p-table #dt [value]="products" [paginator]="true" [rows]="5" [columns]="cols" selectionMode="multiple"
     [exportHeader]="'customExportHeader'" [globalFilterFields]="['name', 'category' , 'price' ,'available']"
-    responsiveLayout="scroll" [exportHeader]="'customExportHeader'">
+    responsiveLayout="scroll">
     <ng-template pTemplate="caption">
       <div class="row justify-content-between align-items-center">
         <div class="col-md-2">

@@ -1,7 +1,7 @@
 <p-menubar>
   <ng-template pTemplate="start">
     <h1 [@typingAnimation]="animationState">
-      <span *ngFor="let letter of letters">{{ letter }}</span>
+      <span *ngFor="let letter of letters">{{ letter | uppercase }}</span>
     </h1>
   </ng-template>
   <ng-template pTemplate="end">

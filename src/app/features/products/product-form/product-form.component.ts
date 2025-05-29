@@ -9,9 +9,13 @@ import { InputUploadComponent } from '../../../shared/components/input-upload/in
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NoLeadingZeroDirective } from '../../../shared/directives/no-leading-zero.directive';
+
+
 @Component({
   selector: 'app-product-form',
-  imports: [DynamicDialogModule, FormsModule, InputFieldComponent, ButtonComponent, InputUploadComponent, CommonModule, HttpClientModule],
+  imports: [DynamicDialogModule, FormsModule, InputFieldComponent,
+    ButtonComponent, InputUploadComponent, CommonModule, HttpClientModule, NoLeadingZeroDirective],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss'
 })
