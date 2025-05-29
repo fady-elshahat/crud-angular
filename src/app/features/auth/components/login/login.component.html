@@ -1,0 +1,26 @@
+<app-card>
+  <section id="login-section">
+
+    <h3 class="mb-4 text-center">Login</h3>
+
+    <form (ngSubmit)="onLogin()">
+
+      <app-input-field label="Email" placeholder="Enter your email" name="email" [(ngModel)]="loginData.email"
+        [type]="'email'" required></app-input-field>
+
+      <app-input-field label="Password" placeholder="Enter your password" name="password"
+        [(ngModel)]="loginData.password" [type]="'password'" required></app-input-field>
+
+      <div class="mt-4 text-center">
+        <app-button type="submit" btnClass="btn-primary w-100" [loading]="isLoading"
+          [disabled]="loginData.email && loginData.password ? false : true">
+          Login
+        </app-button>
+      </div>
+
+      <p class="text-auth my-2">If you do not have an account, you can <span class="cursor-pointer"
+          routerLink="/register">register</span> now.</p>
+    </form>
+
+  </section>
+</app-card>

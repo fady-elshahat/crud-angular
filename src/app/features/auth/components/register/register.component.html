@@ -1,0 +1,29 @@
+<app-card>
+  <section id="register-section">
+    <h3 class="mb-4 text-center">Register</h3>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+      <app-input-field formControlName="username" label="Username" fieldName="Username"
+        placeholder="Enter your Username" required [type]="'text'"></app-input-field>
+
+      <app-input-field formControlName="email" label="Email" [type]="'email'" fieldName="Email"
+        placeholder="Enter your email" required></app-input-field>
+
+      <app-input-field formControlName="password" [type]="'password'" label="Password" fieldName="Password"
+        placeholder="Enter your password" required></app-input-field>
+
+
+      <div class="mt-4 text-center">
+        <app-button type="submit" btnClass="btn-primary w-100" [loading]="isLoading" [disabled]="registerForm.invalid">
+          Register
+        </app-button>
+      </div>
+      <p class="text-auth my-2">If you already have an account, you can <span class="cursor-pointer"
+          routerLink="/Login">Login</span> now.</p>
+    </form>
+
+  </section>
+
+
+</app-card>

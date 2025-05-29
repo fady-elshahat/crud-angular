@@ -1,0 +1,12 @@
+.btn {
+  &.btn-primary {
+    i {
+      padding-inline-end: 8px;
+    }
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

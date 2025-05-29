@@ -1,0 +1,12 @@
+<p-menubar>
+  <ng-template pTemplate="start">
+    <h1 [@typingAnimation]="animationState">
+      <span *ngFor="let letter of letters">{{ letter }}</span>
+    </h1>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <app-button (click)="onLogout()" [icon]="'pi pi-sign-out'" [loading]="isLoading">
+      Logout
+    </app-button>
+  </ng-template>
+</p-menubar>
