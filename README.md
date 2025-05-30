@@ -1,6 +1,6 @@
 # 🧩 Angular In-Work Technical Assessment
 
-**Live Demo:** [https://crud-angular-signal.netlify.app/login](https://crud-angular-signal.netlify.app/login)
+**Live Demo:** [https://crud-angular-signal.netlify.app/login](https://crud-angular-signal.netlify.app)
 
 ---
 
